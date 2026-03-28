@@ -1,0 +1,308 @@
+/* ===============================================
+   AEGIS - Cyber Defense Console
+   Global Design System
+   Theme: Dark military-cyber terminal
+   =============================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #050505;
+  --bg-panel: #0a0a0a;
+  --bg-panel-header: #111111;
+  --bg-card: #080808;
+  --bg-hover: #151515;
+  --border-color: #222222;
+  --border-glow: #00ff8822;
+  --border-active: #333333;
+
+  --green: #00ff88;
+  --green-dim: #00cc6a;
+  --green-muted: #00ff8833;
+  --green-bg: #00ff8810;
+  --red: #ff2d55;
+  --red-dim: #cc1a3e;
+  --red-muted: #ff2d5533;
+  --red-bg: #ff2d5510;
+  --yellow: #ffcc00;
+  --yellow-dim: #cc9900;
+  --yellow-muted: #ffcc0033;
+  --blue: #00aaff;
+  --blue-dim: #0088cc;
+  --blue-muted: #00aaff22;
+  --cyan: #00ffdd;
+  --orange: #ff8800;
+  --orange-muted: #ff880033;
+  --purple: #aa44ff;
+  --purple-muted: #aa44ff33;
+
+  --text-primary: #e0e6f0;
+  --text-secondary: #8899bb;
+  --text-dim: #556688;
+  --text-green: #00ff88;
+
+  --font-mono: "JetBrains Mono", "Consolas", monospace;
+  --font-display: "Bebas Neue", "Impact", sans-serif;
+  --font-sans: "Inter", -apple-system, sans-serif;
+
+  --sidebar-width: 240px;
+  --header-height: 52px;
+  --radius: 6px;
+  --radius-lg: 10px;
+  --gap: 12px;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #e2e8f0;
+  --bg-panel: #ffffff;
+  --bg-panel-header: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-hover: #e2e8f0;
+  --border-color: #cbd5e1;
+  --border-glow: #00ff8844;
+  --border-active: #94a3b8;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-dim: #64748b;
+  --green: #10b981;
+  --green-dim: #059669;
+  --red: #ef4444;
+  --red-dim: #dc2626;
+  --yellow: #f59e0b;
+  --yellow-dim: #d97706;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--green-dim);
+}
+
+/* Scanline overlay */
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 136, 0.012) 2px,
+    rgba(0, 255, 136, 0.012) 4px
+  );
+}
+
+/* --- Animations --- */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--green-muted);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--green-muted);
+  }
+}
+@keyframes threatPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--red-muted);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--red-muted);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility classes */
+.text-green {
+  color: var(--green);
+}
+.text-red {
+  color: var(--red);
+}
+.text-yellow {
+  color: var(--yellow);
+}
+.text-blue {
+  color: var(--blue);
+}
+.text-dim {
+  color: var(--text-dim);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.text-mono {
+  font-family: var(--font-mono);
+}
+.text-display {
+  font-family: var(--font-display);
+  letter-spacing: 2px;
+}
+.animate-fade {
+  animation: fadeIn 0.4s ease-out;
+}
+.animate-slide {
+  animation: slideInRight 0.3s ease-out;
+}
+
+/* Legends */
+.legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.legend-dot.green {
+  background: var(--green);
+}
+.legend-dot.yellow {
+  background: var(--yellow);
+}
+.legend-dot.red {
+  background: var(--red);
+  box-shadow: 0 0 6px var(--red-muted);
+}
+.legend-dot.purple {
+  background: var(--purple);
+  box-shadow: 0 0 6px var(--purple-muted);
+}
+.legend-bar {
+  width: 20px;
+  height: 8px;
+  border-radius: 2px;
+}
+.legend-bar.green {
+  background: var(--green);
+}
+.legend-bar.yellow {
+  background: var(--yellow);
+}
+.legend-bar.red {
+  background: var(--red);
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    margin: 0 !important;
+    padding: 2cm !important;
+    font-size: 11pt !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+}

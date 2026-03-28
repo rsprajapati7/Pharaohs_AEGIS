@@ -1,0 +1,26 @@
+.canvas-tooltip {
+  position: absolute;
+  background: rgba(10, 14, 26, 0.95);
+  border: 1px solid var(--green-dim);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  pointer-events: none;
+  z-index: 50;
+  max-width: 250px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.6),
+    0 0 8px var(--green-muted);
+  font-family: var(--font-mono);
+}
+
+.canvas-tooltip .tt-label {
+  color: var(--text-dim);
+}
+
+.canvas-tooltip .tt-val {
+  color: var(--green);
+  font-weight: 500;
+  margin-left: 5px;
+}

@@ -1,0 +1,74 @@
+.hm-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: #060a14;
+  padding: 10px;
+}
+
+.hm-header {
+  display: flex;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.hm-corner {
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.hm-col-label {
+  flex: 2; /* because we only show every 2nd label */
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hm-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.hm-row {
+  display: flex;
+  min-height: 12px;
+  flex-shrink: 0;
+}
+
+.hm-row-label {
+  width: 40px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hm-cell {
+  flex: 1;
+  margin: 0.5px;
+  border-radius: 1px;
+  position: relative;
+  transition:
+    transform 0.1s ease-out,
+    box-shadow 0.1s ease-out;
+}
+
+/* Pop up animation */
+.hm-cell:hover {
+  transform: scale(2);
+  z-index: 20;
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.8),
+    0 0 4px inset rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: crosshair;
+}
