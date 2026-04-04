@@ -22,6 +22,7 @@
   padding: 12px 16px;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .intel-card::before {
@@ -39,7 +40,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   padding-bottom: 8px;
 }
 
@@ -76,7 +77,7 @@
   font-size: 0.65rem;
   font-weight: 600;
   margin-right: 6px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
 }
 .intel-tag.t-red {
   background: var(--red-muted);

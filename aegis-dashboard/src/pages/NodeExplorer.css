@@ -30,17 +30,17 @@
 }
 
 .registry-table th:hover {
-  color: var(--green);
+  color: var(--yellow);
 }
 
 .registry-table td {
   padding: 8px 14px;
-  border-bottom: 1px solid rgba(26, 39, 68, 0.4);
+  border-bottom: 1px solid rgba(42, 32, 37, 0.4);
   color: var(--text-secondary);
 }
 
 .registry-table tr:hover td {
-  background: rgba(0, 255, 136, 0.03);
+  background: rgba(8, 145, 178, 0.05);
 }
 
 .badge {
@@ -66,7 +66,7 @@
   box-shadow: 0 0 5px var(--red-muted);
 }
 .bg-dim {
-  background: rgba(0, 255, 136, 0.05);
+  background: rgba(8, 145, 178, 0.08);
   color: var(--text-dim);
 }
 

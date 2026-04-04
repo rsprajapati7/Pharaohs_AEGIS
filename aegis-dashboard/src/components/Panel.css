@@ -7,6 +7,7 @@
   overflow: hidden;
   transition: border-color 0.3s;
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .panel::before {
@@ -19,6 +20,7 @@
   background: linear-gradient(
     90deg,
     transparent,
+    var(--yellow-muted),
     var(--green-muted),
     transparent
   );
@@ -48,10 +50,11 @@
   font-family: var(--font-display);
   font-size: 0.88rem;
   color: var(--bg-primary);
-  background: var(--green);
+  background: var(--yellow);
   padding: 3px 8px;
   border-radius: 3px;
   letter-spacing: 2px;
+  box-shadow: 0 0 8px var(--yellow-muted);
 }
 
 .panel-title h2 {
@@ -100,9 +103,10 @@
 }
 
 .btn-control:hover {
-  border-color: var(--green-dim);
-  color: var(--green);
-  background: var(--green-bg);
+  border-color: var(--yellow-dim);
+  color: var(--yellow);
+  background: var(--yellow-muted);
+  box-shadow: 0 0 8px var(--yellow-muted);
 }
 
 .btn-control.active {
@@ -115,6 +119,7 @@
   border-color: var(--green-dim);
   color: var(--green);
   background: var(--green-bg);
+  box-shadow: var(--shadow-glow-cyan);
 }
 
 .search-input {
@@ -131,8 +136,8 @@
 }
 
 .search-input:focus {
-  border-color: var(--green-dim);
-  box-shadow: 0 0 8px var(--green-muted);
+  border-color: var(--yellow-dim);
+  box-shadow: 0 0 8px var(--yellow-muted);
 }
 
 .search-input::placeholder {

@@ -149,8 +149,8 @@
 .ar-export-btn {
   width: 100%;
   padding: 10px 0 !important;
-  color: var(--purple) !important;
-  border-color: var(--purple-muted) !important;
+  color: var(--yellow) !important;
+  border-color: var(--yellow-muted) !important;
   font-family: var(--font-display) !important;
   letter-spacing: 2px;
   font-size: 0.95rem !important;

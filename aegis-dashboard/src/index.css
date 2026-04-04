@@ -1,10 +1,10 @@
 /* ===============================================
    AEGIS - Cyber Defense Console
-   Global Design System
-   Theme: Dark military-cyber terminal
+   Design System: Blade Runner 2049
+   Theme: Cinematic cyberpunk — neon orange × cyan
    =============================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
 
 *,
 *::before,
@@ -15,71 +15,109 @@
 }
 
 :root {
-  --bg-primary: #000000;
-  --bg-secondary: #050505;
-  --bg-panel: #0a0a0a;
-  --bg-panel-header: #111111;
-  --bg-card: #080808;
-  --bg-hover: #151515;
-  --border-color: #222222;
-  --border-glow: #00ff8822;
-  --border-active: #333333;
+  /* ── Surfaces ─────────────────────────── */
+  --bg-primary: #0d0a07;
+  --bg-secondary: #14100b;
+  --bg-panel: #1b1610;
+  --bg-panel-header: #221b13;
+  --bg-card: #181310;
+  --bg-hover: #2a221a;
 
-  --green: #00ff88;
-  --green-dim: #00cc6a;
-  --green-muted: #00ff8833;
-  --green-bg: #00ff8810;
-  --red: #ff2d55;
-  --red-dim: #cc1a3e;
-  --red-muted: #ff2d5533;
-  --red-bg: #ff2d5510;
-  --yellow: #ffcc00;
-  --yellow-dim: #cc9900;
-  --yellow-muted: #ffcc0033;
-  --blue: #00aaff;
-  --blue-dim: #0088cc;
-  --blue-muted: #00aaff22;
-  --cyan: #00ffdd;
-  --orange: #ff8800;
-  --orange-muted: #ff880033;
-  --purple: #aa44ff;
-  --purple-muted: #aa44ff33;
+  /* ── Borders ──────────────────────────── */
+  --border-color: #2e2218;
+  --border-glow: #f78b0422;
+  --border-active: #3d2e1e;
 
-  --text-primary: #e0e6f0;
-  --text-secondary: #8899bb;
-  --text-dim: #556688;
-  --text-green: #00ff88;
+  /* ── Primary Accent: Cyan (safe/active) ─ */
+  --green: #0891b2;
+  --green-dim: #0e7490;
+  --green-muted: #0891b233;
+  --green-bg: #0891b212;
 
+  /* ── Danger: Deep Red ─────────────────── */
+  --red: #dc2626;
+  --red-dim: #b91c1c;
+  --red-muted: #dc262633;
+  --red-bg: #dc262612;
+
+  /* ── Warning: Neon Orange ─────────────── */
+  --yellow: #f78b04;
+  --yellow-dim: #d97706;
+  --yellow-muted: #f78b0433;
+
+  /* ── Info: Light Cyan ─────────────────── */
+  --blue: #06b6d4;
+  --blue-dim: #0891b2;
+  --blue-muted: #06b6d422;
+
+  /* ── Accent Extras ────────────────────── */
+  --cyan: #22d3ee;
+  --orange: #f78b04;
+  --orange-muted: #f78b0433;
+  --purple: #8b5cf6;
+  --purple-muted: #8b5cf633;
+
+  /* ── Text ─────────────────────────────── */
+  --text-primary: #e6e6e6;
+  --text-secondary: #9aa4ad;
+  --text-dim: #5a6570;
+  --text-green: #0891b2;
+
+  /* ── Typography ───────────────────────── */
   --font-mono: "JetBrains Mono", "Consolas", monospace;
-  --font-display: "Bebas Neue", "Impact", sans-serif;
+  --font-display: "Orbitron", "Bebas Neue", sans-serif;
   --font-sans: "Inter", -apple-system, sans-serif;
 
+  /* ── Layout ───────────────────────────── */
   --sidebar-width: 240px;
   --header-height: 52px;
   --radius: 6px;
   --radius-lg: 10px;
   --gap: 12px;
+
+  /* ── Elevation ────────────────────────── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.7);
+  --shadow-glow-orange: 0 0 15px #f78b0430;
+  --shadow-glow-cyan: 0 0 15px #0891b230;
 }
 
+/* ── Light Theme: Desert Haze ────────────── */
 [data-theme="light"] {
-  --bg-primary: #f0f4f8;
-  --bg-secondary: #e2e8f0;
-  --bg-panel: #ffffff;
-  --bg-panel-header: #f8fafc;
-  --bg-card: #ffffff;
-  --bg-hover: #e2e8f0;
-  --border-color: #cbd5e1;
-  --border-glow: #00ff8844;
-  --border-active: #94a3b8;
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-dim: #64748b;
-  --green: #10b981;
-  --green-dim: #059669;
-  --red: #ef4444;
-  --red-dim: #dc2626;
-  --yellow: #f59e0b;
-  --yellow-dim: #d97706;
+  --bg-primary: #f4f1ea;
+  --bg-secondary: #e8dccb;
+  --bg-panel: #efe8db;
+  --bg-panel-header: #e8dccb;
+  --bg-card: #f0e9dc;
+  --bg-hover: #ddd0bc;
+  --border-color: #d6c3a3;
+  --border-glow: #f78b0444;
+  --border-active: #c4a882;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-dim: #7a7060;
+  --green: #0e7490;
+  --green-dim: #0c6479;
+  --green-muted: #0e749033;
+  --green-bg: #0e749012;
+  --red: #b91c1c;
+  --red-dim: #991b1b;
+  --red-muted: #b91c1c33;
+  --red-bg: #b91c1c12;
+  --yellow: #d97706;
+  --yellow-dim: #b45309;
+  --yellow-muted: #d9770633;
+  --blue: #0891b2;
+  --blue-dim: #0e7490;
+  --cyan: #06b6d4;
+  --orange: #d97706;
+  --purple: #7c3aed;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --shadow-glow-orange: 0 0 15px #f78b0420;
+  --shadow-glow-cyan: 0 0 15px #0891b220;
 }
 
 html {
@@ -99,23 +137,23 @@ body {
   min-height: 100vh;
 }
 
-/* Custom Scrollbar */
+/* ── Custom Scrollbar ────────────────────── */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: var(--bg-secondary);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 255, 136, 0.2);
+  background: rgba(247, 139, 4, 0.25);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--green-dim);
+  background: var(--yellow-dim);
 }
 
-/* Scanline overlay */
+/* ── Scanline Overlay ────────────────────── */
 .scanline-overlay {
   position: fixed;
   inset: 0;
@@ -125,12 +163,12 @@ body {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 255, 136, 0.012) 2px,
-    rgba(0, 255, 136, 0.012) 4px
+    rgba(247, 139, 4, 0.008) 2px,
+    rgba(247, 139, 4, 0.008) 4px
   );
 }
 
-/* --- Animations --- */
+/* ── Animations ──────────────────────────── */
 @keyframes pulse {
   0%,
   100% {
@@ -141,6 +179,15 @@ body {
   }
 }
 @keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--yellow-muted);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--yellow-muted);
+  }
+}
+@keyframes accentGlow {
   0%,
   100% {
     box-shadow: 0 0 5px var(--green-muted);
@@ -198,7 +245,7 @@ body {
   }
 }
 
-/* Utility classes */
+/* ── Utility Classes ─────────────────────── */
 .text-green {
   color: var(--green);
 }
@@ -231,7 +278,7 @@ body {
   animation: slideInRight 0.3s ease-out;
 }
 
-/* Legends */
+/* ── Legends ─────────────────────────────── */
 .legend {
   display: flex;
   gap: 16px;
@@ -278,6 +325,7 @@ body {
   background: var(--red);
 }
 
+/* ── Print ───────────────────────────────── */
 @media print {
   /* Reset page background */
   html, body {
