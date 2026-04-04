@@ -8,7 +8,7 @@
   height: 100%;
   overflow-y: auto;
   padding: 16px;
-  background: #050810;
+  background: var(--bg-primary);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.5;
@@ -20,21 +20,21 @@
 }
 
 .term-line:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .term-error {
-  background: rgba(255, 45, 85, 0.1);
+  background: var(--red-bg);
   border-left: 2px solid var(--red);
   padding-left: 8px;
 }
 
 .term-error:hover {
-  background: rgba(255, 45, 85, 0.15);
+  background: var(--red-muted);
 }
 
 .term-rotation {
-  background: rgba(0, 255, 136, 0.1);
+  background: var(--green-bg);
   border-left: 2px solid var(--green);
   padding-left: 8px;
   margin: 8px 0;

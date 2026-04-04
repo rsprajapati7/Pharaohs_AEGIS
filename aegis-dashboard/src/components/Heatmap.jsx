@@ -19,27 +19,24 @@ export default function Heatmap({ heatmap, nodes }) {
   }, [heatmap, nodes]);
 
   const getColor = (val) => {
-    // Logically, a value of 0 means no traffic or idle window for that node.
-    // Making it bright green was incorrect. Making it a very dim, almost invisible trace is correct.
-    if (val === 0) return "rgba(0, 255, 136, 0.05)";
+    // Zero means idle — faint cyan trace
+    if (val === 0) return "rgba(8, 145, 178, 0.05)";
 
     let r, g, b;
     if (val < 150) {
-      // Fast/Clean Traffic: Green (0,255,136) to Yellow (255,204,0)
-      // Normal node latency usually lives between 100ms and 140ms
+      // Fast/Clean Traffic: Cyan (8,145,178) → Orange (247,139,4)
       const v = Math.max(100, val);
-      const t = (v - 100) / 50; // Transition: 100ms is Green, 150ms is Yellow
-      r = Math.floor(0 + t * 255);
-      g = Math.floor(255 - t * 51);
-      b = Math.floor(136 - t * 136);
+      const t = (v - 100) / 50;
+      r = Math.floor(8 + t * 239);
+      g = Math.floor(145 - t * 6);
+      b = Math.floor(178 - t * 174);
     } else {
-      // Moderate/Slow Traffic: Yellow (255,204,0) to Red (255,45,85)
-      // Infected nodes usually live around 235ms+
+      // Moderate/Slow Traffic: Orange (247,139,4) → Deep Red (220,38,38)
       const v = Math.min(220, val);
-      const t = (v - 150) / 70; // Transition: 150ms is Yellow, 220ms+ is solid Red
-      r = Math.floor(255 + t * 0);
-      g = Math.floor(204 - t * 159);
-      b = Math.floor(0 + t * 85);
+      const t = (v - 150) / 70;
+      r = Math.floor(247 - t * 27);
+      g = Math.floor(139 - t * 101);
+      b = Math.floor(4 + t * 34);
     }
     return `rgb(${r},${g},${b})`;
   };

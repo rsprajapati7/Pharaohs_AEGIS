@@ -65,24 +65,24 @@ export default function CityMap({ nodes, showMask = false, onNodeClick }) {
 
       let color, glow, r;
       if (showMask) {
-        color = "#00ff88";
-        glow = "rgba(0,255,136,0.3)";
+        color = "#0891b2";
+        glow = "rgba(8,145,178,0.3)";
         r = 3;
       } else if (node.true_status === "RED") {
-        color = "#ff2d55";
-        glow = "rgba(255,45,85,0.5)";
+        color = "#dc2626";
+        glow = "rgba(220,38,38,0.5)";
         r = 4.5;
       } else if (node.true_status === "YELLOW") {
-        color = "#ffcc00";
-        glow = "rgba(255,204,0,0.3)";
+        color = "#f78b04";
+        glow = "rgba(247,139,4,0.3)";
         r = 3.5;
       } else if (node.mismatch_count > 0) {
-        color = "#aa44ff";
-        glow = "rgba(170,68,255,0.4)";
+        color = "#8b5cf6";
+        glow = "rgba(139,92,246,0.4)";
         r = 4;
       } else {
-        color = "#00ff88";
-        glow = "rgba(0,255,136,0.2)";
+        color = "#0891b2";
+        glow = "rgba(8,145,178,0.2)";
         r = 3;
       }
 

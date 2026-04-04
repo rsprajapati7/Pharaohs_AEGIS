@@ -31,7 +31,7 @@ export default function TopologyMap({ nodes, onNodeClick }) {
         })}
 
         {POSITIONS.map((p, i) => <line key={`r${i}`} x1={p.x} y1={p.y} x2={CENTER.x} y2={CENTER.y}
-          stroke={nodeMap[i]?.status === 'quarantined' ? 'var(--red-muted)' : 'rgba(0,255,136,0.12)'}
+          stroke={nodeMap[i]?.status === 'quarantined' ? 'var(--red-muted)' : 'rgba(8,145,178,0.12)'}
           strokeWidth={1} strokeDasharray="4,8"
           style={nodeMap[i]?.status !== 'quarantined' ? { animation: 'dataFlow 2s linear infinite' } : { opacity: 0.3 }} />)}
 
