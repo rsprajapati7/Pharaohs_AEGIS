@@ -314,8 +314,8 @@ body {
   /* Style the report for clean printing */
   .print-area {
     display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
     padding: 1cm !important;
     font-family: "Courier New", Courier, monospace !important;
     font-size: 11pt !important;
