@@ -97,8 +97,10 @@
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
-  padding: 12px;
+  padding: 10px;
   transition: all 0.5s ease;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .node-card.threat-pulse {
