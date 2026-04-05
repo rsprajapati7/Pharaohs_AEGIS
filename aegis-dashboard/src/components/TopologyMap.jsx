@@ -13,7 +13,7 @@ export default function TopologyMap({ nodes, onNodeClick }) {
 
   return (
     <div style={{ width: '100%', overflow: 'hidden', borderRadius: 'var(--radius)' }}>
-      <svg viewBox="0 0 640 380" style={{ width: '100%', height: 'auto', display: 'block' }}>
+      <svg viewBox="-20 -20 700 440" style={{ width: '100%', height: 'auto', display: 'block' }}>
         <defs>
           <radialGradient id="tg"><stop offset="0%" stopColor="var(--green)" stopOpacity="0.04" /><stop offset="100%" stopOpacity="0" /></radialGradient>
           <filter id="gl"><feGaussianBlur stdDeviation="3" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>

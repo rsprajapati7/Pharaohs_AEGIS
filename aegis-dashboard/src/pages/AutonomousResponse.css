@@ -54,37 +54,30 @@
 /* Main grid */
 .ar-grid {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 300px;
   gap: var(--gap);
+  overflow: hidden;
 }
 
 .ar-left, .ar-right {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
+  min-width: 0;
 }
 
-/* Topology map — capped height so Node Health peeks into view */
-.ar-left > .panel:first-child {
-  max-height: 50vh;
-  overflow: hidden;
-}
-
-.ar-left > .panel:first-child .panel-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.ar-left > .panel:first-child .panel-body > div {
-  transform: scale(0.85);
-  transform-origin: top center;
-}
-
-/* Right column — prevent horizontal overflow */
+/* Right column — compact panel headers to prevent overflow */
 .ar-right .panel-title h2 {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ar-right .panel-icon {
+  font-size: 0.72rem;
+  padding: 2px 5px;
   letter-spacing: 1px;
 }
 
