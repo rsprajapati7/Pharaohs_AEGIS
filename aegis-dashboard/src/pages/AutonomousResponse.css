@@ -66,8 +66,30 @@
 
 /* Topology map — capped height so Node Health peeks into view */
 .ar-left > .panel:first-child {
-  max-height: 52vh;
+  max-height: 50vh;
   overflow: hidden;
+}
+
+.ar-left > .panel:first-child .panel-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ar-left > .panel:first-child .panel-body > div {
+  transform: scale(0.85);
+  transform-origin: top center;
+}
+
+/* Right column — prevent horizontal overflow */
+.ar-right .panel-title h2 {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.ar-right .panel-body {
+  padding: 10px 12px;
 }
 
 /* Node grid */
