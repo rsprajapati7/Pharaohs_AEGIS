@@ -94,15 +94,19 @@ export default function AutonomousResponse() {
         </div>
       </div>
 
-      {/* Main Layout */}
+      {/* Main Layout — 3 columns: Topology | Nodes | Right Sidebar */}
       <div className="ar-grid">
-        {/* Left — Topology + Nodes */}
-        <div className="ar-left">
+        {/* Column 1 — Topology */}
+        <div className="ar-col-topology">
           <Panel title="Network Topology" icon="NET">
             <TopologyMap nodes={nodes} onNodeClick={injectAttack} />
           </Panel>
+        </div>
+
+        {/* Column 2 — Node Health Monitor */}
+        <div className="ar-col-nodes">
           <Panel title="Node Health Monitor" icon="HEALTH" controls={
-            <span className="text-dim" style={{ fontSize: '0.88rem' }}>{active}/8 ONLINE · {clock}</span>
+            <span className="text-dim" style={{ fontSize: '0.78rem' }}>{active}/8 · {clock}</span>
           }>
             <div className="ar-node-grid">
               {nodes.map(n => <NodeHealthCard key={n.id} node={n} onAttack={injectAttack} />)}
@@ -110,17 +114,17 @@ export default function AutonomousResponse() {
           </Panel>
         </div>
 
-        {/* Right — Timeline + Q-Log + Simulator */}
+        {/* Column 3 — Right Sidebar */}
         <div className="ar-right">
           {/* Threshold Slider */}
           <Panel title="Quarantine Threshold" icon="CTRL">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <input type="range" min={20} max={95} value={threshold} onChange={e => setThreshold(+e.target.value)}
                 style={{ flex: 1, accentColor: 'var(--green)' }} />
-              <span className="text-green text-display" style={{ fontSize: '1.7rem', minWidth: 40 }}>{threshold}</span>
+              <span className="text-green text-display" style={{ fontSize: '1.4rem', minWidth: 36 }}>{threshold}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem' }}>
-              <span className="text-dim">20 — aggressive</span><span className="text-dim">95 — lenient</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', marginTop: 2 }}>
+              <span className="text-dim">20 — aggro</span><span className="text-dim">95 — lenient</span>
             </div>
           </Panel>
 
@@ -129,12 +133,12 @@ export default function AutonomousResponse() {
             <span className="badge bg-red">{timeline.length}</span>
           }>
             <div className="ar-timeline-scroll">
-              {timeline.length === 0 ? <div className="text-dim" style={{ textAlign: 'center', padding: 20 }}>// awaiting events</div>
+              {timeline.length === 0 ? <div className="text-dim" style={{ textAlign: 'center', padding: 12, fontSize: '0.8rem' }}>// awaiting events</div>
               : timeline.map(e => (
                 <div key={e.id} className="ar-event animate-fade" style={{ borderLeftColor: sevColor(e.severity) }}>
-                  <span className="text-dim" style={{ minWidth: 60, flexShrink: 0 }}>{e.time}</span>
-                  <span style={{ color: sevColor(e.severity), minWidth: 80, fontWeight: e.severity === 'critical' ? 700 : 400 }}>[{e.type}]</span>
-                  <span className="text-secondary" style={{ wordBreak: 'break-word' }}>{e.message}</span>
+                  <span className="text-dim" style={{ minWidth: 52, flexShrink: 0, fontSize: '0.75rem' }}>{e.time}</span>
+                  <span style={{ color: sevColor(e.severity), minWidth: 64, fontWeight: e.severity === 'critical' ? 700 : 400, fontSize: '0.75rem' }}>[{e.type}]</span>
+                  <span className="text-secondary" style={{ wordBreak: 'break-word', fontSize: '0.75rem' }}>{e.message}</span>
                 </div>
               ))}
             </div>
@@ -145,19 +149,14 @@ export default function AutonomousResponse() {
             <span className="badge bg-red">{qLog.length}</span>
           }>
             <div className="ar-qlog-scroll">
-              {qLog.length === 0 ? <div className="text-dim" style={{ textAlign: 'center', padding: 20 }}>// no nodes isolated</div>
+              {qLog.length === 0 ? <div className="text-dim" style={{ textAlign: 'center', padding: 12, fontSize: '0.8rem' }}>// no nodes isolated</div>
               : qLog.map(e => (
                 <div key={e.id} className="ar-qlog-item animate-fade">
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                    <span className="text-red text-display" style={{ fontSize: '1rem', letterSpacing: 1 }}>{e.nodeName}</span>
-                    <span className="text-dim" style={{ fontSize: '0.88rem' }}>{e.time}</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
+                    <span className="text-red text-display" style={{ fontSize: '0.85rem', letterSpacing: 1 }}>{e.nodeName}</span>
+                    <span className="text-dim" style={{ fontSize: '0.75rem' }}>SCORE <span className="text-red text-display" style={{ fontSize: '1.1rem' }}>{e.score}</span>/100 · {e.time}</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                    <span className="text-dim" style={{ fontSize: '0.85rem' }}>SCORE</span>
-                    <span className="text-red text-display" style={{ fontSize: '1.5rem' }}>{e.score}</span>
-                    <span className="text-dim" style={{ fontSize: '0.85rem' }}>/100</span>
-                  </div>
-                  <div className="text-dim" style={{ fontSize: '0.85rem', background: 'var(--red-bg)', padding: '4px 8px', borderRadius: 'var(--radius)' }}>{e.reason}</div>
+                  <div className="text-dim" style={{ fontSize: '0.75rem', background: 'var(--red-bg)', padding: '3px 6px', borderRadius: 'var(--radius)' }}>{e.reason}</div>
                 </div>
               ))}
             </div>
@@ -165,27 +164,27 @@ export default function AutonomousResponse() {
 
           {/* ML Model Info */}
           <Panel title="ML Threat Engine" icon="ML">
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
-              <span className="text-dim" style={{ fontSize: '0.9rem' }}>Accuracy (NSL-KDD)</span>
-              <span className="text-green text-display" style={{ fontSize: '1.35rem' }}>{ML_WEIGHTS.accuracy}%</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+              <span className="text-dim" style={{ fontSize: '0.8rem' }}>Accuracy (NSL-KDD)</span>
+              <span className="text-green text-display" style={{ fontSize: '1.1rem' }}>{ML_WEIGHTS.accuracy}%</span>
             </div>
             {[
               { n: 'HTTP Risk', v: ML_WEIGHTS.featureImportances.http_risk, c: 'var(--red)' },
               { n: 'Request Freq', v: ML_WEIGHTS.featureImportances.request_freq, c: 'var(--yellow)' },
               { n: 'Latency Jitter', v: ML_WEIGHTS.featureImportances.latency_jitter, c: 'var(--blue)' },
             ].map(f => (
-              <div key={f.n} style={{ marginBottom: 8 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
-                  <span style={{ fontSize: '0.9rem' }}>{f.n}</span>
-                  <span className="text-display" style={{ fontSize: '0.92rem', color: f.c }}>{(f.v * 100).toFixed(1)}%</span>
+              <div key={f.n} style={{ marginBottom: 4 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 2 }}>
+                  <span style={{ fontSize: '0.8rem' }}>{f.n}</span>
+                  <span className="text-display" style={{ fontSize: '0.8rem', color: f.c }}>{(f.v * 100).toFixed(1)}%</span>
                 </div>
-                <div style={{ width: '100%', height: 4, background: 'var(--bg-hover)', borderRadius: 2 }}>
-                  <div style={{ width: `${f.v * 100}%`, height: '100%', background: f.c, borderRadius: 2, boxShadow: `0 0 6px ${f.c}` }} />
+                <div style={{ width: '100%', height: 3, background: 'var(--bg-hover)', borderRadius: 2 }}>
+                  <div style={{ width: `${f.v * 100}%`, height: '100%', background: f.c, borderRadius: 2, boxShadow: `0 0 4px ${f.c}` }} />
                 </div>
               </div>
             ))}
-            <div className="text-dim" style={{ fontSize: '0.82rem', marginTop: 8, fontStyle: 'italic' }}>
-              Trained on {ML_WEIGHTS.trainRecords.toLocaleString()} real NSL-KDD records. Model: {ML_WEIGHTS.model}
+            <div className="text-dim" style={{ fontSize: '0.72rem', marginTop: 4, fontStyle: 'italic' }}>
+              {ML_WEIGHTS.trainRecords.toLocaleString()} NSL-KDD records · {ML_WEIGHTS.model}
             </div>
           </Panel>
 

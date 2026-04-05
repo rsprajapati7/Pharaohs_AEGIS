@@ -1,6 +1,6 @@
 import { HTTP_DISPLAY, scoreColor, statusColor } from '../engine/ThreatEngine';
 
-function ThreatGauge({ score, size = 64 }) {
+function ThreatGauge({ score, size = 44 }) {
   const R = (size - 8) / 2;
   const C = 2 * Math.PI * R;
   const fill = (score / 100) * C;
@@ -14,12 +14,12 @@ function ThreatGauge({ score, size = 64 }) {
           style={{ transition: 'stroke-dasharray .9s ease, stroke .5s', filter: `drop-shadow(0 0 4px ${color})` }} />
       </svg>
       <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 700, color, letterSpacing: 1 }}>{score}</div>
+        fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color, letterSpacing: 1 }}>{score}</div>
     </div>
   );
 }
 
-function Sparkline({ data, color, width = 90, height = 22 }) {
+function Sparkline({ data, color, width = 70, height = 16 }) {
   if (!data || data.length < 2) return null;
   const max = Math.max(...data, 1);
   const pts = data.map((v, i) => `${(i / (data.length - 1)) * width},${height - (v / max) * (height - 2)}`).join(' ');
@@ -43,7 +43,7 @@ export default function NodeHealthCard({ node, onAttack }) {
       <div className="node-card-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <div style={{ width: 8, height: 8, borderRadius: '50%', background: sc, boxShadow: `0 0 8px ${sc}` }} />
-          <span className="text-display" style={{ fontSize: '1rem', color: 'var(--text-primary)', letterSpacing: 1 }}>{node.name}</span>
+          <span className="text-display" style={{ fontSize: '0.85rem', color: 'var(--text-primary)', letterSpacing: 1 }}>{node.name}</span>
         </div>
         <span className={`badge ${isQ ? 'bg-red' : node.status === 'warning' ? 'bg-yellow' : 'bg-green'}`}>
           {node.status.toUpperCase()}
@@ -51,7 +51,7 @@ export default function NodeHealthCard({ node, onAttack }) {
       </div>
 
       {/* Gauge + Signals */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 14, margin: '8px 0' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '4px 0' }}>
         <ThreatGauge score={node.score} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 5 }}>
           {[
@@ -60,8 +60,8 @@ export default function NodeHealthCard({ node, onAttack }) {
             { lbl: 'REQ/S', val: Math.round(node.freq), col: node.freq > 80 ? 'var(--red)' : node.freq > 45 ? 'var(--yellow)' : 'var(--green)' },
           ].map(s => (
             <div key={s.lbl} style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span className="text-dim" style={{ fontSize: '0.88rem' }}>{s.lbl}</span>
-              <span style={{ fontSize: '0.95rem', color: s.col, fontFamily: 'var(--font-mono)' }}>{s.val}</span>
+              <span className="text-dim" style={{ fontSize: '0.75rem' }}>{s.lbl}</span>
+              <span style={{ fontSize: '0.8rem', color: s.col, fontFamily: 'var(--font-mono)' }}>{s.val}</span>
             </div>
           ))}
         </div>
@@ -71,10 +71,10 @@ export default function NodeHealthCard({ node, onAttack }) {
 
       {/* Action */}
       {!isQ ? (
-        <button className="btn-control" style={{ width: '100%', marginTop: 6, color: 'var(--red)', borderColor: 'var(--red-muted)' }}
+        <button className="btn-control" style={{ width: '100%', marginTop: 4, color: 'var(--red)', borderColor: 'var(--red-muted)', fontSize: '0.75rem', padding: '3px 8px' }}
           onClick={() => onAttack(node.id)}>⚡ INJECT ATTACK</button>
       ) : (
-        <div className="text-red text-display" style={{ textAlign: 'center', fontSize: '0.88rem', marginTop: 6, letterSpacing: 2 }}>■ ISOLATED</div>
+        <div className="text-red text-display" style={{ textAlign: 'center', fontSize: '0.75rem', marginTop: 4, letterSpacing: 2 }}>■ ISOLATED</div>
       )}
     </div>
   );
